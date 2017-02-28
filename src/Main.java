@@ -17,15 +17,7 @@ public class Main {
                 System.out.println("Select the field for O (for example A1):");
                 printTable(a1, b1, c1, a2, b2, c2, a3, b3, c3);
                 fieldO = sc.next();
-            }while(!((fieldO.equalsIgnoreCase("A1") && a1.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("B1") && b1.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("C1") && c1.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("A2") && a2.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("B2") && b2.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("C2") && c2.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("A3") && a3.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("B3") && b3.equals(" ")) ||
-                    (fieldO.equalsIgnoreCase("C3") && c3.equals(" "))));
+            }while(!checkIfFieldCorrect(fieldO, a1, b1, c1, a2, b2, c2, a3, b3, c3));
             if (fieldO.equalsIgnoreCase("A1")) a1 = "O";
             else if (fieldO.equalsIgnoreCase("B1")) b1 = "O";
             else if (fieldO.equalsIgnoreCase("C1")) c1 = "O";
@@ -45,15 +37,7 @@ public class Main {
                 System.out.println("Select the field for X (for example A1):");
                 printTable(a1, b1, c1, a2, b2, c2, a3, b3, c3);
                 fieldX = sc.next();
-            }while(!((fieldX.equalsIgnoreCase("A1") && a1.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("B1") && b1.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("C1") && c1.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("A2") && a2.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("B2") && b2.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("C2") && c2.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("A3") && a3.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("B3") && b3.equals(" ")) ||
-                    (fieldX.equalsIgnoreCase("C3") && c3.equals(" "))));
+            }while(!checkIfFieldCorrect(fieldX, a1, b1, c1, a2, b2, c2, a3, b3, c3));
             if (fieldX.equals("A1")) a1 = "X";
             else if (fieldX.equalsIgnoreCase("B1")) b1 = "X";
             else if (fieldX.equalsIgnoreCase("C1")) c1 = "X";
@@ -91,6 +75,22 @@ public class Main {
         System.out.println("       |     |     ");
     }
 
+    public static boolean checkIfFieldCorrect(String field, String a1, String b1, String c1, String a2, String b2, String c2, String a3,
+                                               String b3, String c3){
+        if ((field.equalsIgnoreCase("A1") && a1.equals(" ")) ||
+                (field.equalsIgnoreCase("B1") && b1.equals(" ")) ||
+                (field.equalsIgnoreCase("C1") && c1.equals(" ")) ||
+                (field.equalsIgnoreCase("A2") && a2.equals(" ")) ||
+                (field.equalsIgnoreCase("B2") && b2.equals(" ")) ||
+                (field.equalsIgnoreCase("C2") && c2.equals(" ")) ||
+                (field.equalsIgnoreCase("A3") && a3.equals(" ")) ||
+                (field.equalsIgnoreCase("B3") && b3.equals(" ")) ||
+                (field.equalsIgnoreCase("C3") && c3.equals(" "))){
+            return true;
+        }
+        else return false;
+    }
+
     public static int checkSumOfCharacterCode(String a1, String b1, String c1, String a2, String b2, String c2, String a3,
                                               String b3, String c3){
         StringBuilder stringBuilder = new StringBuilder();
@@ -103,8 +103,7 @@ public class Main {
         return sumOfCharacterCode;
     }
 
-    public static boolean isWinner(String a1, String b1, String c1, String a2, String b2, String c2, String a3, String b3,
-                                   String c3){
+    public static boolean isWinner(String a1, String b1, String c1, String a2, String b2, String c2, String a3, String b3, String c3){
         if ((a1.equals(b1) && a1.equals(c1) && (a1.equals("O") || a1.equals("X"))) ||
                 (a2.equals(b2) && a2.equals(c2) && (a2.equals("O") || a2.equals("X"))) ||
                 (a3.equals(b3) && a3.equals(c3) && (a3.equals("O") || a3.equals("X"))) ||
@@ -118,8 +117,7 @@ public class Main {
         else return false;
     }
 
-    public static void checkWinner(String a1, String b1, String c1, String a2, String b2, String c2, String a3, String b3,
-                                   String c3){
+    public static void checkWinner(String a1, String b1, String c1, String a2, String b2, String c2, String a3, String b3, String c3){
         if ((a1.equals(b1) && a1.equals(c1) && a1.equals("O"))|| (a2.equals(b2) && a2.equals(c2) && a2.equals("O")) ||
                 (a3.equals(b3) && a3.equals(c3) && a3.equals("O")) || (a1.equals(a2) && a1.equals(a3) && a1.equals("O")) ||
                 (b1.equals(b2) && b1.equals(b3) && b1.equals("O")) || (c1.equals(c2) && c1.equals(c3) && c1.equals("O")) ||
@@ -129,8 +127,7 @@ public class Main {
         else System.out.println("2nd player WINS! CONGRATULATIONS!");
     }
 
-    public static boolean endOfTheGame(String a1, String b1, String c1, String a2, String b2, String c2, String a3,
-                                       String b3, String c3){
+    public static boolean endOfTheGame(String a1, String b1, String c1, String a2, String b2, String c2, String a3, String b3, String c3){
         if (!(a1.equals(" ") && b1.equals(" ") && c1.equals(" ") && a2.equals(" ") && b2.equals(" ") &&
                 c2.equals(" ") && a3.equals(" ") && b3.equals(" ") && c3.equals(" "))){
             return true;
